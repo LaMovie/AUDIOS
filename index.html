@@ -223,13 +223,16 @@ h1 {
   "https://geo.dailymotion.com/player.html?video=x99pti4",
   "https://geo.dailymotion.com/player.html?video=x99pxy2",
   "https://geo.dailymotion.com/player.html?video=x99s9ty",
-  "https://geo.dailymotion.com/player.html?video=x99w7vo"
+  "https://geo.dailymotion.com/player.html?video=x99w7vo", 
+  "https://geo.dailymotion.com/player.html?video=x99y4ru", 
+  "https://geo.dailymotion.com/player.html?video=x99zxwy", 
+  "https://geo.dailymotion.com/player.html?video=x9a9e2e"
          ];
 
         var currentIndex = Math.floor(Math.random() * AIDA.length); 
         var iframe = document.getElementById('random-video');
         iframe.src = AIDA[currentIndex];
-    };
+    }; 
 </script>
 
 <script>
@@ -245,20 +248,6 @@ fullscreenButton.addEventListener('click', function() {
     iframe.webkitRequestFullscreen();
   } else if (iframe.msRequestFullscreen) { // IE/Edge
     iframe.msRequestFullscreen();
-  }
-});
-    <!-- Detectar cuando entra o sale de fullscreen -->
-document.addEventListener('fullscreenchange', function() {
-  if (document.fullscreenElement) {
-    <!-- Si estamos en pantalla completa, bloquear orientación horizontal -->
-    if (screen.orientation && screen.orientation.lock) {
-      screen.orientation.lock('landscape');
-    }
-  } else {
-    <!-- Si salimos de pantalla completa, volver a orientación vertical -->
-    if (screen.orientation && screen.orientation.lock) {
-      screen.orientation.lock('portrait');
-    }
   }
 });
 </script>
