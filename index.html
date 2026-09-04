@@ -3,84 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIDA-TV</title>
+      <title>AIDA 📺</title>
 <style>
 body {
     background: #000;
 }
-#video-container {
+#Container {
     width: 100%;
-    text-align: center;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
 }
-iframe {
+#I {
     width: 90%;
     height: 200px;
-    aspect-ration: 16/9;
+    aspect-ratio: 16/9;
     border-radius: 5%;
     border-top: .5vh solid brown;
     border-left: 2vh solid brown;
     border-right: .1vh solid brown;
     border-bottom: 2vh solid #800000;
 }
-.link {
-    background: gold;
-    border-radius:50%;
-    font-weight: bold;
-    border: 2px solid purple;
-}
-.link:hover{
-    transform: scale(1.5) perspective(500px)rotateY(50deg);
-    padding-right: 50px;
-    width: 30%;
-    background: orange;
-    border: 2px solid green;
-}
-h1 {
-    color: gold;
-}
-#fullscreenButton{
-    background:gray;
-    color:black;
-    opacity:0.5;
-    font-weight:bold;
-    font-size:15px;
-    padding:1px;
-    border-radius:50px;
-}
-#Hr1 {
-    width: 10%;
-    height: 1px;
-    background: gray;
-    transform: rotate(80deg);
-}
-#Hr2 {
-    width: 10%;
-    height: 1px;
-    background: gray;
-    transform: translate(2vh, -1vh)rotate(-80deg);
+#FULL {
+    width: 15vh;
+    opacity: 0.5;
+    padding: 1px;
+    color: black;
+    font-size: 15px;
+    background: gray;    
+    font-weight: bold;    
+    border-radius: 50px;    
 }
 #Opaco {
     opacity: .5;
 }
+h1 {
+    color: gold;
+}
+
+@media (min-width: 500px) {
+    #I {
+        width: 80%;
+        max-width: 850px; /* Esto evita que se vea gigante en PC */
+        height: 75vh;
+    }    
+    #FULL {
+        width: 25vh;
+    }
+}
 </style>
 </head>
 <body>        
-             <center>
+         <div id="Container">   
+     
       <h1>⚙️AIDA-TV⚙️</h1><br/>
-      
-<hr id="Hr1"/><hr id="Hr2"/>  
-   
-<div id="video-container">
-    <iframe id="random-video" src="" frameborder="0"></iframe>
-</div>
+     
+    <iframe id="I" src="" frameborder="0"></iframe>
              
 <h3 style="color: gold; font-family: cursive">📺 AIDA-TV 📺</h3>             
   
-  <button id="fullscreenButton">Pantalla Completa</button>
+  <button id="FULL">Pantalla Completa</button>
        
        <img id="Opaco" src="https://bit.ly/3G2A4hx" alt="Retroceder" style="scale: 70%"/>  
-            </center>
-     
+            </div>
 <script>
     window.onload = function() {
         var AIDA = [
@@ -229,17 +214,17 @@ h1 {
   "https://geo.dailymotion.com/player.html?video=x9a9e2e"
          ];
 
-        var currentIndex = Math.floor(Math.random() * AIDA.length); 
-        var iframe = document.getElementById('random-video');
-        iframe.src = AIDA[currentIndex];
+ var MIX = AIDA[Math.floor(Math.random() * AIDA.length)]; 
+        
+        I.src = MIX;
     }; 
 </script>
 
 <script>
-var fullscreenButton = document.querySelector('#fullscreenButton');
-var iframe = document.querySelector('iframe');
+    var Button = document.querySelector('#FULL');
+   var iframe = document.querySelector('#I');
 
-fullscreenButton.addEventListener('click', function() {
+   Button.addEventListener('click', function() {
   if (iframe.requestFullscreen) {
     iframe.requestFullscreen();
   } else if (iframe.mozRequestFullScreen) { // Firefox
@@ -250,76 +235,6 @@ fullscreenButton.addEventListener('click', function() {
     iframe.msRequestFullscreen();
   }
 });
-</script>
-         <!-- HORIZONTAL -->
-<script>
-        function Handle() {
-     (window.innerWidth > window.innerHeight) ? evento() : invento();            
-};
-
-        function evento() {
-    var style = document.createElement('style');
-   style.innerHTML = `
-<style>
-iframe {
-    width: 50%;
-    height: auto;
-    aspect-ration: 16/9;
-    border-radius: 5%;
-    border-top: .5vh solid brown;
-    border-left: 2vh solid brown;
-    border-right: .1vh solid brown;
-    border-bottom: 2vh solid #800000;
-}
-#fullscreenButton{
-    position: relative;
-    top: -95vh;
-    left: 50vh;
-    background:gray;
-    color:black;
-    opacity:0.5;
-    font-weight:bold;
-    font-size:15px;
-    padding:1px;
-    border-radius:50px;
-}
-</style>     
-`;        document.head.appendChild(style);
-} 
-
-       function invento() {
-   var style = document.createElement('style');
-   style.innerHTML = `
-<style>
-iframe {
-    width: 90%;
-    height: 200px;
-    aspect-ration: 16/9;
-    border-radius: 5%;
-    border-top: .5vh solid brown;
-    border-left: 2vh solid brown;
-    border-right: .1vh solid brown;
-    border-bottom: 2vh solid #800000;
-}
-#fullscreenButton{
-    position: relative;
-    top: 0;
-    left: 0;
-    color:black;
-    opacity:0.5;
-    font-weight:bold;
-    font-size:15px;
-    padding:1px;
-    border-radius:50px;
-}
-</style>   
-`;        document.head.appendChild(style);
-}
-
- window.addEventListener("resize", Handle);
-
-  <!-- Llama a la función al cargar la página para establecer el estado inicial -->
-      Handle();
 </script>       
 </body>
 </html>
